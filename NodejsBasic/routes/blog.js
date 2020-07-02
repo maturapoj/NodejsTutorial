@@ -4,16 +4,15 @@ var router = express.Router();
 
 /* GET users listing. */
   router.get('/', function(req, res, next) {
-    res.render('product');
+    res.render('blog');
   });
+
   router.get('/add', function(req, res, next) {
-    res.send('Add Product');
+    res.render('addblog');
   });
-  router.get('/edit', function(req, res, next) {
-    res.send('Edit Product');
+
+  router.get('/read', function(req, res, next) {
+    res.render('readblog');
   });
-  router.get('/delete', function(req, res, next) {
-    res.send('Delete Product');
-  });
-  
+
   module.exports = router;
