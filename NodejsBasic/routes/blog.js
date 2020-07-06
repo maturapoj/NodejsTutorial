@@ -17,9 +17,12 @@ const { body, validationResult } = require('express-validator');
     body("description","Please Input your blog drsccription").not().isEmpty(),
     body("author","Please Input your blog author").not().isEmpty(),
   ], function(req, res, next) {
-    const errors = validationResult(req);
+    const result = validationResult(req);
+    var errors = result.errors;
     if (!errors.isEmpty()) {
-      console.log(errors);
+      res.render('addblog',{errors:errors});
+    }else{
+      //insert to db
     }
   });
 
