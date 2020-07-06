@@ -8,6 +8,7 @@
 <body>
     <%- include layout %>
     <div class="container">
+        <%- messages() %>
         <h2 align ="center">เขียนบทความ</h2>
         <% if(locals.errors){%>
         <ul class="alert alert-danger">
@@ -36,6 +37,9 @@
         
 
         <script>
+            $(function(){
+                $('#messages').addClass('alert alert-success');
+            }) 
             CKEDITOR.replace('description');
         </script>
 

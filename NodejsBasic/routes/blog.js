@@ -8,6 +8,7 @@ const db = monk(url);
 
 /* GET users listing. */
   router.get('/', function(req, res, next) {
+    req.flash("success", "บันทึกเรียบร้อยแล้ว");
     res.render('blog');
   });
 
@@ -35,6 +36,7 @@ const db = monk(url);
         if(err){
           res.send(err);
         }else{
+          req.flash("success", "บันทึกเรียบร้อยแล้ว");
           res.location('/blog/add');
           res.redirect('/blog/add');
         }
