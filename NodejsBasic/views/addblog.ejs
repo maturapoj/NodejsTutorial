@@ -8,9 +8,14 @@
 <body>
     <%- include layout %>
     <div class="container">
-
         <h2 align ="center">เขียนบทความ</h2>
-
+        <% if(locals.errors){%>
+        <ul class="alert alert-danger">
+            <% Object.values(errors).forEach(function(error){ %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+        <% } %>
         <form class="" avtion="/blog/add" method="post">
             <div class="form-group">
                 <label for="">ชื่อบทความ</label>
