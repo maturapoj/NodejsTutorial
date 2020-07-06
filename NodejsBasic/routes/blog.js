@@ -1,7 +1,10 @@
 var express = require('express');
 const { render } = require('ejs');
 var router = express.Router();
+const monk = require('monk');
 const { body, validationResult } = require('express-validator');
+const url = 'localhost:27017/TutorailDB';
+const db = monk(url);
 
 /* GET users listing. */
   router.get('/', function(req, res, next) {
@@ -23,6 +26,19 @@ const { body, validationResult } = require('express-validator');
       res.render('addblog',{errors:errors});
     }else{
       //insert to db
+      var ct=db.get('blogs');
+      ct.insert({
+        name:req.body.name,
+        descriptiob:req.body.description,
+        author:req.body.author
+      },function(err,blog){
+        if(err){
+          res.send(err);
+        }else{
+          res.location('/blog/add');
+          res.redirect('/blog/add');
+        }
+      })
     }
   });
 
